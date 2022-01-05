@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+#include <iostream>
 
 const int MAX = 100;
 
@@ -38,35 +39,39 @@ void luDecomposition(int mat[][MAX], int n)
 					sum += (lower[k][j] * upper[j][i]);
 
 				// Evaluating L(k, i)
-				lower[k][i]
-					= (mat[k][i] - sum) / upper[i][i];
+				lower[k][i]	= (mat[k][i] - sum) / upper[i][i];
 			}
 		}
 	}
 
-	// setw is for displaying nicely
+
+	/*// output it for displaying nicely
 	cout << setw(6) << "	 Lower Triangular"
 		<< setw(32)
 		<< "Upper Triangular" << endl;
+*/
 
-	// Displaying the result :
-	for (int i = 0; i < n; i++)
-	{
-		// Lower
-		for (int j = 0; j < n; j++)
-			cout << setw(6) << lower[i][j] << "\t";
-		cout << "\t";
+	// Lower :
+	cout << "Lower: "<< endl;
+	for (int i = 0; i < n; i++){
+		for (int j = 0; j < n; j++){
+			cout  << lower[i][j] << "\t ";
+		    }
+		cout << endl ;
+	}
+	
+	cout << "----------------------" << endl;
 
 		// Upper
-		for (int j = 0; j < n; j++)
-			cout << setw(6) << upper[i][j] << "\t";
-		cout << endl;
+		cout << "Upper: "<< endl;
+		for (int i = 0; i < n; i++){
+		    for (int j = 0; j < n; j++){
+			cout << upper[i][j] << "\t";
+	            }
+		cout <<endl;
 	}
 }
-
-// Driver code
-int main()
-{
+int main(){
 	int mat[][MAX]
 		= { { 1, 3, 4, 6 },
 		    { 2, 3, 4, 5 },
